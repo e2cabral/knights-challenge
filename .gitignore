@@ -1,0 +1,8 @@
+# Folders
+node_modules
+
+# Build
+build
+
+# IDE Folders and Files
+/.idea/
