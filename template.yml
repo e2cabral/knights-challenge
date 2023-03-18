@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sample SAM Template for lambda
+
+Resources:
+  Get:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/get/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /knights
+            Method: get
+  Post:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/create/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /knights
+            Method: post
