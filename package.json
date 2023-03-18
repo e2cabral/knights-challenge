@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.111",
     "@types/jest": "^29.4.0",
+    "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "eslint": "^8.35.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -33,12 +34,14 @@
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1332.0",
     "joi": "^17.8.3",
+    "mongoose": "^7.0.2",
     "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
     "typedi": "^0.10.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --quiet && jest --collect-coverage --verbose"
+      "pre-commit": "lint-staged --quiet && jest --collect-coverage --verbose --config"
     }
   }
 }

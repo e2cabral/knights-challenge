@@ -11,5 +11,8 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/consistent-type-imports": "off"
+    }
 }
