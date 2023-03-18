@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --collect-coverage --verbose --config",
+    "lint": "eslint fix",
+    "lint:staged": "lint-staged --quiet",
     "prepare": "husky install"
   },
   "keywords": [
