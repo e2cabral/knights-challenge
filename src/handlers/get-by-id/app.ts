@@ -2,7 +2,7 @@ import { type APIGatewayEvent, type APIGatewayProxyResult } from 'aws-lambda'
 import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
 import { routeParamValidator } from './schema.validator'
 import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
-import { KnightsService } from '../../domain/services/knights.service'
+import KnightServiceFactory from '../../main/factories/knight-service.factory'
 
 export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   try {
@@ -13,7 +13,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
       return MalformedObject()
     }
 
-    const service = new KnightsService()
+    const service = new KnightServiceFactory().getInstance()
+
     const data = await service.findById(params.id)
 
     return Ok(200, data)

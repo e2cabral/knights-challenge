@@ -4,8 +4,8 @@ import {
 } from 'aws-lambda'
 import { validator } from './schema.validator'
 import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
-import { KnightsService } from '../../domain/services/knights.service'
 import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
+import KnightServiceFactory from '../../main/factories/knight-service.factory'
 
 export type KnightsQueryString = {
   page: string
@@ -22,7 +22,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
   const { page, itemsPerPage, filter } = event.queryStringParameters as KnightsQueryString
 
   try {
-    const service = new KnightsService()
+    const service = new KnightServiceFactory().getInstance()
+
     const data = await service.find(page, itemsPerPage, filter)
 
     return Ok(200, data)
