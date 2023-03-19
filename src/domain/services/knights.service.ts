@@ -29,4 +29,13 @@ export class KnightsService {
       throw new Error((err as Error).message)
     }
   }
+
+  async update (knight: Knight, id: string): Promise<void> {
+    try {
+      const repository = new KnightsRepositories()
+      await repository.update(knight, id)
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
 }
