@@ -17,8 +17,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
 
     const data = await service.findById(params.id)
 
-    return Ok(200, data)
+    return Ok(200, data, '')
   } catch (err) {
-    return BadRequest((err as Error))
+    return BadRequest()
   }
 }

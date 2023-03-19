@@ -19,7 +19,8 @@ export const MalformedObject = (): HttpResponse => {
   )
 }
 
-export const BadRequest = (err: BadRequestError): HttpResponse => {
+export const BadRequest = (): HttpResponse => {
+  const err = new BadRequestError()
   return new HttpResponse(
     400,
     JSON.stringify(Response<BadRequestError>(400, err, err.message))

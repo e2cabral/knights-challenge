@@ -21,8 +21,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
 
     await service.update(knight, params.id)
 
-    return Ok(200, 'Knight successfully updated!')
+    return Ok(204, null, 'Knight successfully updated!')
   } catch (err) {
-    return BadRequest((err as Error))
+    return BadRequest()
   }
 }
