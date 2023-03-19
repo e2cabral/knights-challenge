@@ -3,7 +3,6 @@ import { Connect } from '../../main/config/database.config'
 import { Knights } from '../../domain/entities/knights.entity'
 import { Types } from 'mongoose'
 import { Weapons } from '../../domain/entities/weapon.entity'
-import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
 
 export default class KnightsRepositories {
   async find (
