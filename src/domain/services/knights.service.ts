@@ -21,6 +21,18 @@ export class KnightsService {
     }
   }
 
+  async findById (
+    id: string
+  ): Promise<Knight> {
+    try {
+      const repository = new KnightsRepositories()
+
+      return await repository.findById(id)
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
+
   async create (knight: Knight): Promise<void> {
     try {
       const repository = new KnightsRepositories()
