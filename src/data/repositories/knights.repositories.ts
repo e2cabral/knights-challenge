@@ -13,7 +13,14 @@ export default class KnightsRepositories {
     try {
       await Connect()
 
-      return (await Knights
+      let query = Knights.find()
+
+      if (filter) {
+        query = query
+          .where({ class: filter })
+      }
+
+      return (await query
         .find()
         .populate('weapons')
         .skip((Number(page) - 1) * Number(itemsPerPage))
