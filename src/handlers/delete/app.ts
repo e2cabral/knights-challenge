@@ -17,8 +17,12 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
 
     await service.delete(params.id)
 
-    return Ok(200, 'Knight successfully deleted!')
+    return Ok(
+      204,
+      null,
+      'Knight successfully deleted!'
+    )
   } catch (err) {
-    return BadRequest((err as Error))
+    return BadRequest()
   }
 }

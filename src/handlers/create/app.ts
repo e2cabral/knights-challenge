@@ -16,8 +16,12 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
 
     await service.create((JSON.parse((event.body != null) ? event.body : '{}') as unknown) as Knight)
 
-    return Ok(200, 'Knight successfully created!')
+    return Ok(
+      201,
+      null,
+      'Knight successfully created!'
+    )
   } catch (err) {
-    return BadRequest((err as Error))
+    return BadRequest()
   }
 }

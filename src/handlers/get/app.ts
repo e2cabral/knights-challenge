@@ -26,8 +26,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
 
     const data = await service.find(page, itemsPerPage, filter)
 
-    return Ok(200, data)
+    return Ok(200, data, `${data.length} knights retrieved`)
   } catch (err) {
-    return BadRequest((err as Error))
+    return BadRequest()
   }
 }
