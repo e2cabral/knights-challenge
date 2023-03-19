@@ -31,6 +31,18 @@ export default class KnightsRepositories {
     }
   }
 
+  async findById (id: string): Promise<Knight> {
+    try {
+      await Connect()
+
+      return (await Knights
+        .findOne({ _id: id })
+        .exec() as unknown) as Knight
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
+
   async create (knight: Knight): Promise<void> {
     try {
       await Connect()

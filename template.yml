@@ -17,6 +17,20 @@ Resources:
           Properties:
             Path: /knights
             Method: get
+  GetById:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/get-by-id/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /knights-by-id/{id}
+            Method: get
   Post:
     Type: AWS::Serverless::Function
     Properties:
