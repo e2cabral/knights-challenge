@@ -38,4 +38,13 @@ export class KnightsService {
       throw new Error((err as Error).message)
     }
   }
+
+  async delete (id: string): Promise<void> {
+    try {
+      const repository = new KnightsRepositories()
+      await repository.delete(id)
+    } catch (err) {
+      throw new Error((err as Error).message)
+    }
+  }
 }
