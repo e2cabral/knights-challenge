@@ -1,9 +1,9 @@
 import { type APIGatewayEvent, type APIGatewayProxyResult } from 'aws-lambda'
-import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
+import { BadRequest, MalformedObject, Ok } from '../../../infra/helpers/http.helper'
 import { routeParamValidator, validator } from './schema.validator'
-import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
-import Knight from '../../domain/models/knight.model'
-import KnightServiceFactory from '../../main/factories/knight-service.factory'
+import { isNullOrUndefined } from '../../../infra/helpers/verification.helper'
+import Knight from '../../../domain/models/knight.model'
+import KnightServiceFactory from '../../../main/factories/knight-service.factory'
 
 export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   const knight = JSON.parse((event.body != null) ? event.body : '{}') as Knight
