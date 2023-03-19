@@ -45,3 +45,18 @@ Resources:
           Properties:
             Path: /knights/{id}
             Method: patch
+
+  Delete:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/delete/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /knights/{id}
+            Method: delete
