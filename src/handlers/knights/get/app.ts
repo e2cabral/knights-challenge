@@ -3,9 +3,9 @@ import {
   APIGatewayProxyResult
 } from 'aws-lambda'
 import { validator } from './schema.validator'
-import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
-import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
-import KnightServiceFactory from '../../main/factories/knight-service.factory'
+import { BadRequest, MalformedObject, Ok } from '../../../infra/helpers/http.helper'
+import { isNullOrUndefined } from '../../../infra/helpers/verification.helper'
+import KnightServiceFactory from '../../../main/factories/knight-service.factory'
 
 export type KnightsQueryString = {
   page: string

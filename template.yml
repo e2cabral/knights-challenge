@@ -7,7 +7,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/get/app.handle
+      Handler: build/handlers/knights/get/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -21,7 +21,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/get-by-id/app.handle
+      Handler: build/handlers/knights/get-by-id/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -35,7 +35,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/create/app.handle
+      Handler: build/handlers/knights/create/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -49,7 +49,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/update/app.handle
+      Handler: build/handlers/knights/update/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -64,7 +64,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/delete/app.handle
+      Handler: build/handlers/knights/delete/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -74,3 +74,19 @@ Resources:
           Properties:
             Path: /knights/{id}
             Method: delete
+
+
+  WeaponPost:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/weapons/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /weapons
+            Method: post
