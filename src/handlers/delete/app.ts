@@ -1,8 +1,8 @@
 import { type APIGatewayEvent, type APIGatewayProxyResult } from 'aws-lambda'
 import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
 import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
-import { KnightsService } from '../../domain/services/knights.service'
 import { routeParamValidator } from './schema.validator'
+import KnightServiceFactory from '../../main/factories/knight-service.factory'
 
 export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   const params = event.pathParameters as { id: string }
@@ -13,7 +13,7 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
   }
 
   try {
-    const service = new KnightsService()
+    const service = new KnightServiceFactory().getInstance()
 
     await service.delete(params.id)
 

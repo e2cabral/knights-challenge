@@ -1,9 +1,9 @@
 import { type APIGatewayEvent, type APIGatewayProxyResult } from 'aws-lambda'
 import { BadRequest, MalformedObject, Ok } from '../../infra/helpers/http.helper'
 import { validator } from './schema.validator'
-import { KnightsService } from '../../domain/services/knights.service'
 import type Knight from '../../domain/models/knight.model'
 import { isNullOrUndefined } from '../../infra/helpers/verification.helper'
+import KnightServiceFactory from '../../main/factories/knight-service.factory'
 
 export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   const isValid = validator.validate(event.body).error
@@ -12,7 +12,8 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
   }
 
   try {
-    const service = new KnightsService()
+    const service = new KnightServiceFactory().getInstance()
+
     await service.create((JSON.parse((event.body != null) ? event.body : '{}') as unknown) as Knight)
 
     return Ok(200, 'Knight successfully created!')
