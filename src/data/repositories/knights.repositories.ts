@@ -79,4 +79,24 @@ export default class KnightsRepositories {
       throw new Error((err as Error).message)
     }
   }
+
+  async delete (id: string): Promise<void> {
+    await Connect()
+
+    try {
+      const knight = await Knights.findOne({ _id: id }).exec()
+
+      if (!knight) {
+        throw new Error('You must provide a valid id')
+      }
+
+      for (const weaponId of knight.weapons) {
+        await Weapons.updateOne({ _id: weaponId }, { $pull: { knights: id } })
+      }
+
+      await Knights.deleteOne({ _id: id })
+    } catch (err) {
+
+    }
+  }
 }
