@@ -8,7 +8,7 @@ export class KnightsService {
     page: string,
     itemsPerPage: string,
     filter?: string
-  ): Promise<Knight[] | Error> {
+  ): Promise<Knight[]> {
     try {
       if (isNullOrUndefined(filter)) {
         return await this.repository.find(page, itemsPerPage)
@@ -16,7 +16,7 @@ export class KnightsService {
 
       return await this.repository.find(page, itemsPerPage, filter)
     } catch (err) {
-      return new Error((err as Error).message)
+      throw new Error((err as Error).message)
     }
   }
 
