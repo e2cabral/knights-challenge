@@ -4,5 +4,8 @@ node_modules
 # Build
 build
 
+# Tests
+coverage
+
 # IDE Folders and Files
 /.idea/
