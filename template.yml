@@ -80,7 +80,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: build/handlers/weapons/app.handle
+      Handler: build/handlers/weapons/create/app.handle
       Runtime: nodejs14.x
       Timeout: 30
       MemorySize: 1028
@@ -90,3 +90,17 @@ Resources:
           Properties:
             Path: /weapons
             Method: post
+  WeaponGet:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: build/handlers/weapons/get/app.handle
+      Runtime: nodejs14.x
+      Timeout: 30
+      MemorySize: 1028
+      Events:
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /weapons
+            Method: get
