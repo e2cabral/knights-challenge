@@ -6,7 +6,7 @@ const Weapon = new Schema({
   name: { type: String, required: true },
   mod: { type: Number, required: true },
   attr: { type: String, required: true },
-  knights: [{ type: Schema.Types.ObjectId, required: false }]
+  knights: [{ ref: 'Knight', type: Schema.Types.ObjectId, required: false }]
 }, { collection: 'weapons' })
 
 export const Weapons = mongoose.model('Weapon', Weapon)
