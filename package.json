@@ -4,8 +4,9 @@
   "description": "A Lambda Boilerplate",
   "main": "index.js",
   "scripts": {
+    "dev:lambda": "sam local start-api -p 3003 -d 3003",
     "build": "tsc",
-    "test": "jest --collect-coverage --verbose --config",
+    "test": "jest --collect-coverage --config",
     "lint": "eslint fix",
     "lint:staged": "lint-staged --quiet",
     "prepare": "husky install"
