@@ -4,7 +4,7 @@
   "description": "A Lambda Boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev:lambda": "sam local start-api -p 3003 -d 3003",
+    "dev:lambda": "sam local start-api -p 3001",
     "build": "tsc",
     "test": "jest --collect-coverage --config",
     "lint": "eslint fix",
