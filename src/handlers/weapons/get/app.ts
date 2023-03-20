@@ -25,7 +25,7 @@ export const handle = async (event: APIGatewayEvent): Promise<APIGatewayProxyRes
       .limit(Number(query.itemsPerPage))
       .exec()
 
-    return Ok(204, data, `${data.length} weapons retrieved!`)
+    return Ok(200, data, `${data.length} weapons retrieved!`)
   } catch (err) {
     return BadRequest()
   }
